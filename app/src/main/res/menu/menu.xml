@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ic_common"
+        android:icon="@drawable/ic_common"
+        android:title="@string/menu_ic_common"/>
+    <item
+        android:id="@+id/ic_weapon"
+        android:icon="@drawable/ic_weapon"
+        android:title="@string/menu_ic_weapon"/>
+    <item
+        android:id="@+id/ic_character"
+        android:icon="@drawable/ic_character"
+        android:title="@string/menu_ic_character"/>
+</menu>

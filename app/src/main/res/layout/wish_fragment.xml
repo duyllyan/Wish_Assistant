@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WishFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/count_card"
+        android:layout_width="110dp"
+        android:layout_height="220dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_1"
+        app:layout_constraintEnd_toStartOf="@+id/pity_card"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:padding="12dp"
+                android:src="@drawable/ic_wish"
+                app:tint="?colorOnSurface" />
+
+            <TextView
+                android:id="@+id/current_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="12dp"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:text="60"
+                tools:textColor="?colorOnSurface" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/soft_pity_card"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/count_card"
+        app:layout_constraintEnd_toEndOf="@+id/pity_card"
+        app:layout_constraintStart_toStartOf="@+id/pity_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/pity_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:text="60"
+                tools:textColor="?colorOnSurface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="@string/pity"
+                tools:textColor="?colorOnSurface" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pity_card"
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/count_card"
+        app:layout_constraintTop_toTopOf="@+id/count_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/soft_pity_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:text="60"
+                tools:textColor="?colorOnSurface" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="@string/soft_pity"
+                tools:textColor="?colorOnSurface" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button_1"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:text="@string/pull_1"
+
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_got_it"
+        app:layout_constraintStart_toStartOf="@+id/count_card"
+        app:layout_constraintTop_toBottomOf="@+id/count_card" />
+
+    <Button
+        android:id="@+id/button_10"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/button_background"
+        android:text="@string/pull_10"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/soft_pity_card"
+        app:layout_constraintTop_toTopOf="@+id/button_1" />
+
+    <Button
+        android:id="@+id/button_got_it"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:background="@drawable/button_background"
+        android:text="@string/got_it"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/button_1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

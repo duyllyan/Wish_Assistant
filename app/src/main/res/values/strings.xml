@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Wish Assistant</string>
+    <string name="menu_ic_common">Common</string>
+    <string name="menu_ic_weapon">Weapon</string>
+    <string name="menu_ic_character">Character</string>
+    <string name="got_it">I got it!</string>
+    <string name="pull_10">+ 10</string>
+    <string name="pull_1">+ 1</string>
+    <string name="pity">Pity</string>
+    <string name="soft_pity">Soft Pity</string>
+</resources>
