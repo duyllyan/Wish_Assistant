@@ -1,7 +1,10 @@
 package br.com.duyllyan.wishassistant
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.service.quicksettings.TileService
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 
 private const val KEY = "index"

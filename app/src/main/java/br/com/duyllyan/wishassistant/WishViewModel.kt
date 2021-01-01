@@ -1,6 +1,8 @@
 package br.com.duyllyan.wishassistant
 
 import android.content.Context
+import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.duyllyan.wishassistant.model.WishRepository
@@ -9,6 +11,7 @@ private const val KEY = "br.com.duyllyan.wishassistant.wishes"
 private const val WEAPON_INDEX = "weapon_index"
 private const val COMMON_INDEX = "common_index"
 private const val CHAR_INDEX = "char_index"
+private const val softPityDifference = 14
 
 class WishViewModel(private val repository: WishRepository): ViewModel() {
 
@@ -18,25 +21,96 @@ class WishViewModel(private val repository: WishRepository): ViewModel() {
 
     var currentKey = COMMON_INDEX
     var currentValue = commonWish
-    var softPity = if (76 - currentValue > 0) {
-        76 - currentValue
-    } else {
-        0
+    var softPity = getSoftPity()
+    var pity = getPity()
+
+    fun resetWishes() {
+        when (currentKey) {
+            COMMON_INDEX -> commonWish = 0
+            WEAPON_INDEX -> weaponWish = 0
+            CHAR_INDEX -> characterWish = 0
+        }
+        currentValue = 0
+        softPity = getSoftPity()
+        pity = getPity()
+        repository.setWishes(commonWish, weaponWish, characterWish)
+
     }
 
-    fun addWishes(quantity: Int) {
+    fun addWishes(quantity: Int, context: Context) {
+        /*if (currentValue + quantity >= 90) {
+            when (currentKey) {
+                COMMON_INDEX -> commonWish += quantity - 90
+                WEAPON_INDEX -> weaponWish += quantity - 90
+                CHAR_INDEX -> characterWish += quantity - 90
+            }
+            currentValue += quantity - 90
+        } else {
+            when (currentKey) {
+                COMMON_INDEX -> commonWish += quantity
+                WEAPON_INDEX -> weaponWish += quantity
+                CHAR_INDEX -> characterWish += quantity
+            }
+            currentValue += quantity
+        }*/
         when (currentKey) {
-            COMMON_INDEX -> commonWish += quantity
-            WEAPON_INDEX -> weaponWish += quantity
-            CHAR_INDEX -> characterWish += quantity
+            COMMON_INDEX -> commonWish += verifyPity(quantity, 90)
+            WEAPON_INDEX -> weaponWish += verifyPity(quantity, 80)
+            CHAR_INDEX -> characterWish += verifyPity(quantity, 90)
         }
+/*        if (pity == 0) {
+            Toast.makeText(context, "Teste", Toast.LENGTH_SHORT).show()
+        }*/
+        repository.setWishes(commonWish, weaponWish, characterWish)
+    }
+
+    private fun verifyPity(quantity: Int, pityValue: Int) = if (currentValue + quantity >= pityValue) {
+        currentValue += quantity - pityValue
+        softPity = getPityValue(pityValue)
+        pity = getPityValue(pityValue)
+        quantity - pityValue
+    } else {
         currentValue += quantity
-        softPity = if (76 - currentValue > 0) {
-            76 - currentValue
+        softPity = getPityValue(pityValue)
+        pity = getPityValue(pityValue)
+        quantity
+    }
+
+    fun updateTextView(currentWish: TextView, currentSoftPity: TextView, currentPity: TextView) {
+        currentWish.text = currentValue.toString()
+        currentSoftPity.text = softPity.toString()
+        currentPity.text = pity.toString()
+    }
+
+    private fun getPityValue(pityValue : Int) : Int {
+        return if (pityValue - currentValue > 0) {
+            pityValue - currentValue
         } else {
             0
         }
-        repository.setWishes(commonWish, weaponWish, characterWish)
+    }
+
+    fun updatePity() {
+        pity = getPityValue(verifyPity())
+        softPity = getPityValue(verifySoftPity())
+    }
+
+    @JvmName("getSoftPity1")
+    fun getSoftPity() : Int {
+        return getPityValue(verifySoftPity())
+    }
+
+    private fun verifySoftPity() = verifyPity() - softPityDifference
+
+    @JvmName("getPity1")
+    fun getPity() : Int {
+        return getPityValue(verifyPity())
+    }
+
+    private fun verifyPity() = if (currentKey == WEAPON_INDEX) {
+        80
+    } else {
+        90
     }
 
     class WishViewModelFactory(private val repository: WishRepository)  : ViewModelProvider.Factory {

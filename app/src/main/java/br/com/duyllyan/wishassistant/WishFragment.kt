@@ -1,17 +1,14 @@
 package br.com.duyllyan.wishassistant
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import br.com.duyllyan.wishassistant.model.WishRepository
-import com.google.android.material.bottomnavigation.BottomNavigationMenu
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 private const val KEY_INDEX = "index"
@@ -23,6 +20,7 @@ class WishFragment() : Fragment() {
     lateinit var softPityIndex: TextView
     lateinit var button1: Button
     lateinit var button10: Button
+    lateinit var buttonGotIt: Button
     lateinit var menuBottomNavigation: BottomNavigationView
     lateinit var wishViewModel: WishViewModel
 
@@ -51,59 +49,58 @@ class WishFragment() : Fragment() {
         currentIndex.text = recoveryData.toString()
         softPityIndex = activity!!.findViewById(R.id.soft_pity_index)
         softPityIndex.text = wishViewModel.softPity.toString()
+        pityIndex = activity!!.findViewById(R.id.pity_index)
+        pityIndex.text = wishViewModel.pity.toString()
+
+        buttonGotIt = activity!!.findViewById(R.id.button_got_it)
+        buttonGotIt.setOnClickListener {
+            wishViewModel.apply {
+                resetWishes()
+                updateTextView(currentIndex, softPityIndex, pityIndex)
+                updatePity()
+            }
+        }
+
         menuBottomNavigation = activity!!.findViewById(R.id.menu_bottom_navigation)
         menuBottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.ic_common -> wishViewModel.apply {
                     currentValue = commonWish
-                    softPity = if (76 - currentValue > 0) {
-                        76 - currentValue
-                    } else {
-                        0
-                    }
                     currentKey = br.com.duyllyan.wishassistant.model.COMMON_INDEX
+                    updatePity()
                 }
                 R.id.ic_weapon -> wishViewModel.apply {
                     currentValue = weaponWish
-                    softPity = if (76 - currentValue > 0) {
-                        76 - currentValue
-                    } else {
-                        0
-                    }
                     currentKey = br.com.duyllyan.wishassistant.model.WEAPON_INDEX
+                    updatePity()
                 }
                 R.id.ic_character -> wishViewModel.apply {
                     currentValue = characterWish
-                    softPity = if (76 - currentValue > 0) {
-                    76 - currentValue
-                } else {
-                    0
-                }
                     currentKey = br.com.duyllyan.wishassistant.model.CHAR_INDEX
+                    updatePity()
                 }
             }
-            updateTextView()
+            wishViewModel.updateTextView(currentIndex, softPityIndex, pityIndex)
             true
         }
 
         button1 = activity!!.findViewById(R.id.button_1)
         button1.setOnClickListener {
-            wishViewModel.addWishes(1)
-            updateTextView()
+            wishViewModel.apply {
+                addWishes(1, requireContext())
+                updateTextView(currentIndex, softPityIndex, pityIndex)
+            }
         }
 
         button10 = activity!!.findViewById(R.id.button_10)
         button10.setOnClickListener {
-            wishViewModel.addWishes(10)
-            updateTextView()
+            wishViewModel.apply {
+                addWishes(10, requireContext())
+                updateTextView(currentIndex, softPityIndex, pityIndex)
+            }
         }
-
     }
 
-    private fun updateTextView() {
-        currentIndex.text = wishViewModel.currentValue.toString()
-        softPityIndex.text = wishViewModel.softPity.toString()
-    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
