@@ -88,6 +88,7 @@ class WishFragment() : Fragment() {
         button1.setOnClickListener {
             wishViewModel.apply {
                 addWishes(1, requireContext())
+                updatePity()
                 updateTextView(currentIndex, softPityIndex, pityIndex)
             }
         }
@@ -96,6 +97,7 @@ class WishFragment() : Fragment() {
         button10.setOnClickListener {
             wishViewModel.apply {
                 addWishes(10, requireContext())
+                updatePity()
                 updateTextView(currentIndex, softPityIndex, pityIndex)
             }
         }

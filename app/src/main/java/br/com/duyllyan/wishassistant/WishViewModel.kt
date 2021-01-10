@@ -38,21 +38,6 @@ class WishViewModel(private val repository: WishRepository): ViewModel() {
     }
 
     fun addWishes(quantity: Int, context: Context) {
-        /*if (currentValue + quantity >= 90) {
-            when (currentKey) {
-                COMMON_INDEX -> commonWish += quantity - 90
-                WEAPON_INDEX -> weaponWish += quantity - 90
-                CHAR_INDEX -> characterWish += quantity - 90
-            }
-            currentValue += quantity - 90
-        } else {
-            when (currentKey) {
-                COMMON_INDEX -> commonWish += quantity
-                WEAPON_INDEX -> weaponWish += quantity
-                CHAR_INDEX -> characterWish += quantity
-            }
-            currentValue += quantity
-        }*/
         when (currentKey) {
             COMMON_INDEX -> commonWish += verifyPity(quantity, 90)
             WEAPON_INDEX -> weaponWish += verifyPity(quantity, 80)
