@@ -8,7 +8,7 @@ Download:
   Features:
 * Quick Settings Tile (Android 7.0+)<br/>
 ![tile](tile_config.gif)
-* Floating Widget for easy access the app without leave the game
+* Floating Widget for easy access the app without leave the game<br/>
 ![floating](floating_widget.gif)
 
 
