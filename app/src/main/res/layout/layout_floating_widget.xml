@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/frameLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
@@ -33,7 +32,8 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:id="@+id/btn_back"
-                        android:src="@mipmap/ic_back_round"/>
+                        android:src="@mipmap/ic_back_round"
+                        android:contentDescription="@string/button_background" />
                     <Button
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -55,12 +55,10 @@
                         android:layout_height="40dp"
                         android:id="@+id/btn_got_it"
                         android:src="@mipmap/ic_catch_round"
-                        android:layout_marginTop="8dp"/>
+                        android:layout_marginTop="8dp"
+                        android:contentDescription="@string/up_vote_symbol" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,15 +66,17 @@
                     android:id="@+id/card"
                     android:gravity="center">
                     <androidx.cardview.widget.CardView
-                        android:layout_width="91dp"
-                        android:layout_height="143dp"
-                        android:layout_marginBottom="2dp">
+                        android:layout_width="100dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_height="140dp"
+                        android:layout_marginBottom="5dp">
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:layout_gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            tools:ignore="UseCompoundDrawables">
                             <TextView
                                 android:id="@+id/current_index"
                                 android:layout_width="wrap_content"
@@ -90,21 +90,25 @@
                                 android:id="@+id/wish_icon"
                                 android:layout_width="55dp"
                                 android:layout_height="55dp"
-                                android:src="@drawable/ic_common"/>
+                                android:layout_marginBottom="5dp"
+                                android:src="@drawable/ic_common"
+                                android:contentDescription="@string/bag" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
                     <ImageButton
                         android:id="@+id/button_right"
                         android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/card"
+                        android:layout_marginTop="3dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/button_background_corner"
                         android:backgroundTint="@color/navyBlue"
                         android:src="@drawable/ic_arrow_right"
-                        android:tint="@color/white"/>
+                        android:tint="@color/white"
+                        android:contentDescription="@string/arrow_turned_to_right" />
                 </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
-        <!--Colapsed Layout-->
+        <!--Collapsed Layout-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,13 +124,15 @@
                 android:layout_height="70dp"
                 android:id="@+id/collapsedMenu"
                 android:layout_marginTop="8dp"
-                android:src="@mipmap/ic_wish_round"/>
+                android:src="@mipmap/ic_wish_round"
+                android:contentDescription="@string/star_icon" />
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/btn_close"
                 android:src="@mipmap/ic_close_round"
-                android:layout_marginStart="50dp"/>
+                android:layout_marginStart="50dp"
+                android:contentDescription="@string/close_button" />
         </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

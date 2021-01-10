@@ -1,5 +1,6 @@
 package br.com.duyllyan.wishassistant
 
+import android.annotation.SuppressLint
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -16,14 +17,14 @@ import kotlin.math.roundToInt
 
 class FloatingViewService : Service(){
 
-    var LAYOUT_FLAG = 0
+    private var layoutFlag = 0
 
     private var currentIndex = 0
 
     private lateinit var wishViewModel: WishViewModel
     lateinit var floatingView: View
     lateinit var manager: WindowManager
-    lateinit var params: WindowManager.LayoutParams
+    private lateinit var params: WindowManager.LayoutParams
     private lateinit var collapsedLayout: View
     private lateinit var expandedLayout: View
     private lateinit var collapsedMenu: View
@@ -40,8 +41,9 @@ class FloatingViewService : Service(){
         return null
     }
 
+    @SuppressLint("InflateParams")
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        LAYOUT_FLAG = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
             WindowManager.LayoutParams.TYPE_PHONE
@@ -49,7 +51,7 @@ class FloatingViewService : Service(){
         val params = WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                LAYOUT_FLAG,
+                layoutFlag,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT
         )
@@ -115,6 +117,7 @@ class FloatingViewService : Service(){
             var initialTouchX: Float? = null
             var initialTouchY: Float? = null
 
+            @SuppressLint("ClickableViewAccessibility")
             override fun onTouch(view: View?, motionEvent: MotionEvent?): Boolean {
 
                 when (motionEvent!!.action) {

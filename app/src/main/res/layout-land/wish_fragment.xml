@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WishFragment">
@@ -26,7 +25,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="20dp">
+            android:padding="20dp"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="80dp"
@@ -34,7 +34,8 @@
                 android:alpha="0.6"
                 android:padding="12dp"
                 android:src="@drawable/ic_wish"
-                app:tint="?colorOnSurface" />
+                app:tint="?colorOnSurface"
+                android:contentDescription="@string/star_icon" />
 
             <TextView
                 android:id="@+id/current_index"

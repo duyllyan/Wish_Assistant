@@ -2,10 +2,6 @@ package br.com.duyllyan.wishassistant.model
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
-import android.text.Editable
-import br.com.duyllyan.wishassistant.WishViewModel
-import kotlinx.coroutines.channels.Channel
 
 private const val KEY = "br.com.duyllyan.wishassistant.wishes"
 const val WEAPON_INDEX = "weapon_index"

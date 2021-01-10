@@ -2,12 +2,10 @@ package br.com.duyllyan.wishassistant
 
 import android.content.Context
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.duyllyan.wishassistant.model.WishRepository
 
-private const val KEY = "br.com.duyllyan.wishassistant.wishes"
 private const val WEAPON_INDEX = "weapon_index"
 private const val COMMON_INDEX = "common_index"
 private const val CHAR_INDEX = "char_index"

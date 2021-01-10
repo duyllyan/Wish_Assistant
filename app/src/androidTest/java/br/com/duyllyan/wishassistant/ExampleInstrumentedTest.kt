@@ -1,3 +1,5 @@
+@file:Suppress("Annotator", "Annotator", "Annotator", "Annotator", "Annotator")
+
 package br.com.duyllyan.wishassistant
 
 import androidx.test.platform.app.InstrumentationRegistry

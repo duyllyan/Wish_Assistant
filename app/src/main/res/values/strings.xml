@@ -8,4 +8,10 @@
     <string name="pull_1">+ 1</string>
     <string name="pity">Pity</string>
     <string name="soft_pity">Soft Pity</string>
+    <string name="button_background">button background</string>
+    <string name="up_vote_symbol">up vote symbol</string>
+    <string name="bag">bag</string>
+    <string name="arrow_turned_to_right">arrow turned to right</string>
+    <string name="star_icon">star icon</string>
+    <string name="close_button">close button</string>
 </resources>

@@ -13,16 +13,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 private const val KEY_INDEX = "index"
 
-class WishFragment() : Fragment() {
+class WishFragment : Fragment() {
 
-    lateinit var currentIndex: TextView
-    lateinit var pityIndex: TextView
-    lateinit var softPityIndex: TextView
-    lateinit var button1: Button
-    lateinit var button10: Button
-    lateinit var buttonGotIt: Button
-    lateinit var menuBottomNavigation: BottomNavigationView
-    lateinit var wishViewModel: WishViewModel
+    private lateinit var currentIndex: TextView
+    private lateinit var pityIndex: TextView
+    private lateinit var softPityIndex: TextView
+    private lateinit var button1: Button
+    private lateinit var button10: Button
+    private lateinit var buttonGotIt: Button
+    private lateinit var menuBottomNavigation: BottomNavigationView
+    private lateinit var wishViewModel: WishViewModel
 
     companion object {
         fun newInstance() = WishFragment()

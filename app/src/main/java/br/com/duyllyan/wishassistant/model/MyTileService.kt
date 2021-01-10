@@ -1,15 +1,11 @@
 package br.com.duyllyan.wishassistant.model
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
-import android.os.IBinder
 import android.provider.Settings
-import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import androidx.annotation.RequiresApi
 import br.com.duyllyan.wishassistant.FloatingViewService
-import br.com.duyllyan.wishassistant.MainActivity
 
 @RequiresApi(Build.VERSION_CODES.N)
 class MyTileService: TileService() {
