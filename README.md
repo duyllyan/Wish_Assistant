@@ -1,6 +1,6 @@
 # Wish_Assistant
 
-This is a tool created for monitoring the count of wishes made at Genshin Impact
+This is a tool created to monitor the count of wishes made in Genshin Impact
 
 Download:
 [Wish Assistant v0.1](WishAssistant.apk)
